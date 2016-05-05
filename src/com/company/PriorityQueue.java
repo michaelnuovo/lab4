@@ -39,7 +39,6 @@ public class PriorityQueue<AnyType> extends AbstractCollection<AnyType>
         cmp = null;
         //currentSize = coll.size( );
         currentSize = comparableArray.length;
-        System.out.println("currentSize is "+currentSize);
         array = (AnyType[]) new Object[ ( currentSize + 2 ) * 11 / 10 ];
 
         //int i = 1;
