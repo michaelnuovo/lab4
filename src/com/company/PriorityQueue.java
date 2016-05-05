@@ -33,15 +33,23 @@ public class PriorityQueue<AnyType> extends AbstractCollection<AnyType>
     /**
      * Construct a PriorityQueue from another Collection.
      */
-    public PriorityQueue( Collection<? extends AnyType> coll )
+    //public PriorityQueue( Collection<? extends AnyType> coll )
+    public PriorityQueue( AnyType[] comparableArray )
     {
         cmp = null;
-        currentSize = coll.size( );
+        //currentSize = coll.size( );
+        currentSize = comparableArray.length;
+        System.out.println("currentSize is "+currentSize);
         array = (AnyType[]) new Object[ ( currentSize + 2 ) * 11 / 10 ];
 
+        //int i = 1;
+        //for( AnyType item : coll )
+        //    array[ i++ ] = item;
+
         int i = 1;
-        for( AnyType item : coll )
+        for( AnyType item : comparableArray )
             array[ i++ ] = item;
+
         buildHeap( );
     }
 
