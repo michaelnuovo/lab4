@@ -7,22 +7,44 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Declares references to sort-times.
+        // These reference will hold sort-times.
         Long heapSortTime;
         Long mergeSortTime;
-        Long quickSort2GapTime;
-        Long quickSortGonnetTime;
-        Long quickSortHibbardTime;
-        Long quickSortSedgewickTime;
-        Long quickSortKnuthTime;
+        Long quickSortTime;
+        Long shellSort2gapTime;
+        Long shellSortGonnetTime;
+        Long shellTimeSortHibbardTime;
+        Long shellSortSedgewickTime;
+        Long shellSortKnuthTime;
+
+        Comparable[] ar1 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
+        ShellSort2Gap.shellsort(ar1);
+        printArray(ar1);
+
+        Comparable[] ar2 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
+        ShellSortGonnet.shellsort(ar2);
+        printArray(ar2);
+
+        Comparable[] ar3 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
+        ShellSortHibbard.shellsort(ar3);
+        printArray(ar3);
+
+        Comparable[] ar4 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
+        ShellSortSedgewick.shellsort(ar4);
+        printArray(ar4);
+
+        System.out.println("Sedgewick sequences are");
+        //{1, 5, 19, 41, 109, 209, 505, 929, 2161, 3905}
+        printArray(ShellSortSedgewick.getSedgewickSequence(1000000));
+        printArray(ShellSortSedgewick.getSecondSequence(1000000));
 
         // Records sort-times for individual algorithms.
-        heapSortTime = heapSortTime();
-        mergeSortTime = mergeSortTime();
-        quickSort2GapTime = quickSort2GapTime();
+        //heapSortTime = heapSortTime();
+        //mergeSortTime = mergeSortTime();
+        //quickSort = quickSort2GapTime();
 
         // Prints sort-time statistics.
-        printSortTimeStatistics(heapSortTime, mergeSortTime, quickSort2GapTime);
+        //printSortTimeStatistics(heapSortTime, mergeSortTime, quickSort);
     }
 
     private static void printSortTimeStatistics(Long heapSortTime,
@@ -119,12 +141,26 @@ public class Main {
     }
 
     /**
-     * Prints a Comparable array for debugging purposes.
+     * Private method prints a Comparable array for debugging purposes.
      * @param comparableArray
      */
     private static void printArray(Comparable[] comparableArray){
 
         for(Comparable x : comparableArray)
-            System.out.println(x);
+            System.out.print(x+", ");
+
+        System.out.println();
+    }
+
+    /**
+     * Public method prints a Comparable array for debugging purposes.
+     * @param comparableArray
+     */
+    public static void printArray(int[] comparableArray){
+
+        for(int x : comparableArray)
+            System.out.print(x+", ");
+
+        System.out.println();
     }
 }
