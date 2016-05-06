@@ -19,15 +19,15 @@ public class Main {
 
         Comparable[] ar1 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
         ShellSort2Gap.shellsort(ar1);
-        printArray(ar1);
+        //printArray(ar1);
 
         Comparable[] ar2 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
         ShellSortGonnet.shellsort(ar2);
-        printArray(ar2);
+        //printArray(ar2);
 
         Comparable[] ar3 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
         ShellSortHibbard.shellsort(ar3);
-        printArray(ar3);
+        //printArray(ar3);
 
         Comparable[] ar4 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
         ShellSortSedgewick.shellsort(ar4);
@@ -35,8 +35,8 @@ public class Main {
 
         System.out.println("Sedgewick sequences are");
         //{1, 5, 19, 41, 109, 209, 505, 929, 2161, 3905}
-        printArray(ShellSortSedgewick.getSedgewickSequence(1000000));
-        printArray(ShellSortSedgewick.getSecondSequence(1000000));
+        //printArray(ShellSortSedgewick.getSedgewickSequence(1000000));
+        //printArray(ShellSortSedgewick.getSecondSequence(1000000));
 
         // Records sort-times for individual algorithms.
         //heapSortTime = heapSortTime();
