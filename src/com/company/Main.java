@@ -5,9 +5,21 @@ import java.util.Random;
 
 public class Main {
 
+    /**
+     * The main method calls getTime() methods
+     * for individual algorithms respectively, and
+     * feeds this information into the
+     * printTimeStatistics() method.
+     * @param args
+     */
     public static void main(String[] args) {
 
-        // These reference will hold sort-times.
+        // MetaStats object holds stats objects for individual algorithms.
+        // It records information about each algorithm and will
+        // ultimately be passed to printSortTimeStatistics().
+        MetaStats metaStats = new MetaStats();
+
+        // Sets references to sort-times
         Long heapSortTime;
         Long mergeSortTime;
         Long quickSortTime;
@@ -17,34 +29,18 @@ public class Main {
         Long shellSortSedgewickTime;
         Long shellSortKnuthTime;
 
-        Comparable[] ar1 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
-        ShellSort2Gap.shellsort(ar1);
-        //printArray(ar1);
+        // Initialize sort-time references
+        heapSortTime = getHeapSortTime();
+        mergeSortTime = getMergeSortTime();
+        quickSortTime = getQuickSortTime();
+        shellSort2gapTime = getShellSort2gapTime();
+        shellSortGonnetTime = getShellSortGonnetTime();
+        shellTimeSortHibbardTime = getShellTimeSortHibbardTime();
+        shellSortSedgewickTime = getShellSortSedgewickTime();
+        shellSortKnuthTime = getShellSortKnuthTime();
 
-        Comparable[] ar2 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
-        ShellSortGonnet.shellsort(ar2);
-        //printArray(ar2);
-
-        Comparable[] ar3 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
-        ShellSortHibbard.shellsort(ar3);
-        //printArray(ar3);
-
-        Comparable[] ar4 = {5,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2,4,3,2,1,4,2,5,1,7,5,4,2,7,9,3,2,6,5,2,7,4,45,12,67,3,2};
-        ShellSortSedgewick.shellsort(ar4);
-        printArray(ar4);
-
-        System.out.println("Sedgewick sequences are");
-        //{1, 5, 19, 41, 109, 209, 505, 929, 2161, 3905}
-        //printArray(ShellSortSedgewick.getSedgewickSequence(1000000));
-        //printArray(ShellSortSedgewick.getSecondSequence(1000000));
-
-        // Records sort-times for individual algorithms.
-        //heapSortTime = heapSortTime();
-        //mergeSortTime = mergeSortTime();
-        //quickSort = quickSort2GapTime();
-
-        // Prints sort-time statistics.
-        //printSortTimeStatistics(heapSortTime, mergeSortTime, quickSort);
+        //Prints sort-time statistics.
+        printSortTimeStatistics(heapSortTime, mergeSortTime, quickSortTime);
     }
 
     private static void printSortTimeStatistics(Long heapSortTime,
@@ -61,16 +57,61 @@ public class Main {
     }
 
     /**
-     * Quick sort using 2-gap Weiss version. Returns sorting time.
+     * Shell sort using Weiss version with 2 Gaps. Returns sorting time.
      * @return
      */
-    private static Long quickSort2GapTime(){
+    private static Long getShellSort2gapTime(){
+
+
+    }
+
+    /**
+     * Shell sort using Weiss version with Gonnet Gaps. Returns sorting time.
+     * @return
+     */
+    private static Long getShellSortGonnetTime(){
+
+
+    }
+
+    /**
+     * Shell sort using Weiss version with Hibbard sequence. Returns sorting time.
+     * @return
+     */
+    private static Long getShellTimeSortHibbardTime(){
+
+
+    }
+
+    /**
+     * Shell sort using Weiss version with Sedgewick sequence. Returns sorting time.
+     * @return
+     */
+    private static Long getShellSortSedgewickTime(){
+
+
+    }
+
+    /**
+     * Shell sort using Weiss version with Knuth sequence. Returns sorting time.
+     * @return
+     */
+    private static Long getShellSortKnuthTime(){
+
+
+    }
+
+    /**
+     * Quick sort using Weiss version. Returns sorting time.
+     * @return
+     */
+    private static Long getQuickSortTime(){
 
         // Log start time.
         Long startTime = System.nanoTime();
 
         // Sort a random array.
-        QuickSort2Gap.quicksort(returnRandomArray());
+        QuickSort.quicksort(returnRandomArray());
 
         // Returns merge-sort sort-time.
         return System.nanoTime() - startTime;
@@ -80,7 +121,7 @@ public class Main {
      * Merge sort using Weiss version. Returns sorting time.
      * @return
      */
-    private static Long mergeSortTime(){
+    private static Long getMergeSortTime(){
 
         // Log start time.
         Long startTime = System.nanoTime();
@@ -97,7 +138,7 @@ public class Main {
      * Build heap time is equivalent to sorting time.
      * @return
      */
-    private static Long heapSortTime(){
+    private static Long getHeapSortTime(){
 
         // Log start time.
         Long startTime = System.nanoTime();
