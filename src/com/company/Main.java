@@ -14,162 +14,96 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        // MetaStats object holds stats objects for individual algorithms.
-        // It records information about each algorithm and will
-        // ultimately be passed to printSortTimeStatistics().
-        MetaStats metaStats = new MetaStats();
+        //StatsObjectContainer contains a statsObject reference
+        //for each algorithm object.
+        StatsObjectContainer statsObjectContainer = new StatsObjectContainer();
 
-        // Initializes stats fields for MetaStats objects
-        getHeapSortTime(metaStats);
-        getMergeSortTime(metaStats);
-        getQuickSortTime(metaStats);
-        getShellSort2gapTime(metaStats);
-        getShellSortGonnetTime(metaStats);
-        getShellTimeSortHibbardTime(metaStats);
-        getShellSortSedgewickTime(metaStats);
-        getShellSortKnuthTime(metaStats);
+        //Populate statsObjects in StatsObjectContainer
+        generateStats(statsObjectContainer.mergeSortStats, new MergeSort());
+        generateStats(statsObjectContainer.priorityQueueStats, new MergeSort());
+        generateStats(statsObjectContainer.quickSortStats, new MergeSort());
+        generateStats(statsObjectContainer.shellSort2GapStats, new MergeSort());
+        generateStats(statsObjectContainer.shellSortGonnetStats, new MergeSort());
+        generateStats(statsObjectContainer.shellSortHibbardStats, new MergeSort());
+        generateStats(statsObjectContainer.shellSortKnuthStats, new MergeSort());
+        generateStats(statsObjectContainer.shellSortSedgewickStats, new MergeSort());
 
         //Prints sort-time statistics.
-        printSortTimeStatistics(metaStats);
+        PrintData.printSortTimeStatistics(statsObjectContainer);
     }
 
-    private static void printSortTimeStatistics(MetaStats metaStats){
+    private static <A extends SortInterface>
+    void generateStats(
+            StatsObject statsObject,
+            A algorithmObject){
 
-        DecimalFormat formatter = new DecimalFormat("#,###");
+        //The reference to the sample
+        Comparable[] sample;
 
+        //n is a minimum data size that requires half a second of my CPU time
+        //with a quadratic sorting algorithm
+        int sampleSize = 1000;
 
-        System.out.println("heapSortTime is " + formatter.format(heapSortTime));
-        System.out.println("mergeSortTime is " + formatter.format(mergeSortTime));
-        System.out.println("quickSort2GapTime is " + formatter.format(quickSort2GapTime));
+        //Outer loop generates the sample
+        for(int j = 1; j <= 3; j++){
 
+            //Successive samples should be twice as large as the previous
+            sample = returnRandomArray(sampleSize);
+            sampleSize *= 2;
+
+            //Inner loops generates the run
+            for(int k = 1; k <= 3; k++){
+
+                //Sample 1
+
+                    //Run 1
+                    if(k == 1 && j == 1)
+                        statsObject.S1R1 = getRunTime(algorithmObject, sample);
+                    //Run 2
+                    if(k == 1 && j == 2)
+                        statsObject.S1R2 = getRunTime(algorithmObject, sample);
+                    //Run 3
+                    if(k == 1 && j == 3)
+                        statsObject.S1R3 = getRunTime(algorithmObject, sample);
+
+                //Sample 2
+
+                    //Run 1
+                    if(k == 2 && j == 1)
+                        statsObject.S2R1 = getRunTime(algorithmObject, sample);
+                    //Run 2
+                    if(k == 2 && j == 2)
+                        statsObject.S2R2 = getRunTime(algorithmObject, sample);
+                    //Run 3
+                    if(k == 2 && j == 3)
+                        statsObject.S2R3 = getRunTime(algorithmObject, sample);
+
+                //Sample 3
+
+                    //Run 1
+                    if(k == 3 && j == 1)
+                        statsObject.S3R1 = getRunTime(algorithmObject, sample);
+                    //Run 2
+                    if(k == 3 && j == 2)
+                        statsObject.S3R2 = getRunTime(algorithmObject, sample);
+                    //Run 3
+                    if(k == 3 && j == 3)
+                        statsObject.S3R3 = getRunTime(algorithmObject, sample);
+            }
+        }
     }
 
-    /**
-     * Shell sort using Weiss version with 2 Gaps. Returns sorting time.
-     * @return
-     */
-    private static Long getShellSort2gapTime(MetaStats metaStats){
+    private static
+    <A extends SortInterface>
+    Long getRunTime(A algorithmObject, Comparable[] sample){
 
         // Log start time.
         Long startTime = System.nanoTime();
 
         // Sort a random array.
-        ShellSort2Gap.shellsort(returnRandomArray());
+        algorithmObject.sort(sample);
 
         // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Shell sort using Weiss version with Gonnet Gaps. Returns sorting time.
-     * @return
-     */
-    private static Long getShellSortGonnetTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Sort a random array.
-        ShellSortGonnet.shellsort(returnRandomArray());
-
-        // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Shell sort using Weiss version with Hibbard sequence. Returns sorting time.
-     * @return
-     */
-    private static Long getShellTimeSortHibbardTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Sort a random array.
-        ShellSortHibbard.shellsort(returnRandomArray());
-
-        // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Shell sort using Weiss version with Sedgewick sequence. Returns sorting time.
-     * @return
-     */
-    private static Long getShellSortSedgewickTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Sort a random array.
-        ShellSortSedgewick.shellsort(returnRandomArray());
-
-        // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Shell sort using Weiss version with Knuth sequence. Returns sorting time.
-     * @return
-     */
-    private static Long getShellSortKnuthTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Sort a random array.
-        ShellSortKnuth.shellsort(returnRandomArray());
-
-        // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Quick sort using Weiss version. Returns sorting time.
-     * @return
-     */
-    private static Long getQuickSortTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Sort a random array.
-        QuickSort.quicksort(returnRandomArray());
-
-        // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Merge sort using Weiss version. Returns sorting time.
-     * @return
-     */
-    private static Long getMergeSortTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Sort a random array.
-        MergeSort.mergeSort(returnRandomArray());
-
-        // Returns merge-sort sort-time.
-        return System.nanoTime() - startTime;
-    }
-
-    /**
-     * Heap sort using Weiss version. Returns sorting time.
-     * Build heap time is equivalent to sorting time.
-     * @return
-     */
-    private static Long getHeapSortTime(MetaStats metaStats){
-
-        // Log start time.
-        Long startTime = System.nanoTime();
-
-        // Builds the heap.
-        PriorityQueue<Comparable> priorityQueue = new PriorityQueue(returnRandomArray());
-
-        // Returns build-heap sort-time.
         return System.nanoTime() - startTime;
     }
 
@@ -177,10 +111,10 @@ public class Main {
      * Returns an array of random numbers.
      * @return
      */
-    private static Comparable[] returnRandomArray(){
+    private static Comparable[] returnRandomArray(int sampleSize){
 
         // Initialize a Comparable array.
-        Comparable[] comparableArray = new Comparable[100];
+        Comparable[] comparableArray = new Comparable[sampleSize];
 
         // Return array populated with random numbers.
         return populateArray(comparableArray);
@@ -202,29 +136,5 @@ public class Main {
 
         // Returns the array
         return comparableArray;
-    }
-
-    /**
-     * Private method prints a Comparable array for debugging purposes.
-     * @param comparableArray
-     */
-    private static void printArray(Comparable[] comparableArray){
-
-        for(Comparable x : comparableArray)
-            System.out.print(x+", ");
-
-        System.out.println();
-    }
-
-    /**
-     * Public method prints a Comparable array for debugging purposes.
-     * @param comparableArray
-     */
-    public static void printArray(int[] comparableArray){
-
-        for(int x : comparableArray)
-            System.out.print(x+", ");
-
-        System.out.println();
     }
 }
