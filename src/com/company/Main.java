@@ -19,33 +19,21 @@ public class Main {
         // ultimately be passed to printSortTimeStatistics().
         MetaStats metaStats = new MetaStats();
 
-        // Sets references to sort-times
-        Long heapSortTime;
-        Long mergeSortTime;
-        Long quickSortTime;
-        Long shellSort2gapTime;
-        Long shellSortGonnetTime;
-        Long shellTimeSortHibbardTime;
-        Long shellSortSedgewickTime;
-        Long shellSortKnuthTime;
-
-        // Initialize sort-time references
-        heapSortTime = getHeapSortTime();
-        mergeSortTime = getMergeSortTime();
-        quickSortTime = getQuickSortTime();
-        shellSort2gapTime = getShellSort2gapTime();
-        shellSortGonnetTime = getShellSortGonnetTime();
-        shellTimeSortHibbardTime = getShellTimeSortHibbardTime();
-        shellSortSedgewickTime = getShellSortSedgewickTime();
-        shellSortKnuthTime = getShellSortKnuthTime();
+        // Initializes stats fields for MetaStats objects
+        getHeapSortTime(metaStats);
+        getMergeSortTime(metaStats);
+        getQuickSortTime(metaStats);
+        getShellSort2gapTime(metaStats);
+        getShellSortGonnetTime(metaStats);
+        getShellTimeSortHibbardTime(metaStats);
+        getShellSortSedgewickTime(metaStats);
+        getShellSortKnuthTime(metaStats);
 
         //Prints sort-time statistics.
-        printSortTimeStatistics(heapSortTime, mergeSortTime, quickSortTime);
+        printSortTimeStatistics(metaStats);
     }
 
-    private static void printSortTimeStatistics(Long heapSortTime,
-                                                Long mergeSortTime,
-                                                Long quickSort2GapTime){
+    private static void printSortTimeStatistics(MetaStats metaStats){
 
         DecimalFormat formatter = new DecimalFormat("#,###");
 
@@ -60,52 +48,87 @@ public class Main {
      * Shell sort using Weiss version with 2 Gaps. Returns sorting time.
      * @return
      */
-    private static Long getShellSort2gapTime(){
+    private static Long getShellSort2gapTime(MetaStats metaStats){
 
+        // Log start time.
+        Long startTime = System.nanoTime();
 
+        // Sort a random array.
+        ShellSort2Gap.shellsort(returnRandomArray());
+
+        // Returns merge-sort sort-time.
+        return System.nanoTime() - startTime;
     }
 
     /**
      * Shell sort using Weiss version with Gonnet Gaps. Returns sorting time.
      * @return
      */
-    private static Long getShellSortGonnetTime(){
+    private static Long getShellSortGonnetTime(MetaStats metaStats){
 
+        // Log start time.
+        Long startTime = System.nanoTime();
 
+        // Sort a random array.
+        ShellSortGonnet.shellsort(returnRandomArray());
+
+        // Returns merge-sort sort-time.
+        return System.nanoTime() - startTime;
     }
 
     /**
      * Shell sort using Weiss version with Hibbard sequence. Returns sorting time.
      * @return
      */
-    private static Long getShellTimeSortHibbardTime(){
+    private static Long getShellTimeSortHibbardTime(MetaStats metaStats){
 
+        // Log start time.
+        Long startTime = System.nanoTime();
 
+        // Sort a random array.
+        ShellSortHibbard.shellsort(returnRandomArray());
+
+        // Returns merge-sort sort-time.
+        return System.nanoTime() - startTime;
     }
 
     /**
      * Shell sort using Weiss version with Sedgewick sequence. Returns sorting time.
      * @return
      */
-    private static Long getShellSortSedgewickTime(){
+    private static Long getShellSortSedgewickTime(MetaStats metaStats){
 
+        // Log start time.
+        Long startTime = System.nanoTime();
 
+        // Sort a random array.
+        ShellSortSedgewick.shellsort(returnRandomArray());
+
+        // Returns merge-sort sort-time.
+        return System.nanoTime() - startTime;
     }
 
     /**
      * Shell sort using Weiss version with Knuth sequence. Returns sorting time.
      * @return
      */
-    private static Long getShellSortKnuthTime(){
+    private static Long getShellSortKnuthTime(MetaStats metaStats){
 
+        // Log start time.
+        Long startTime = System.nanoTime();
 
+        // Sort a random array.
+        ShellSortKnuth.shellsort(returnRandomArray());
+
+        // Returns merge-sort sort-time.
+        return System.nanoTime() - startTime;
     }
 
     /**
      * Quick sort using Weiss version. Returns sorting time.
      * @return
      */
-    private static Long getQuickSortTime(){
+    private static Long getQuickSortTime(MetaStats metaStats){
 
         // Log start time.
         Long startTime = System.nanoTime();
@@ -121,7 +144,7 @@ public class Main {
      * Merge sort using Weiss version. Returns sorting time.
      * @return
      */
-    private static Long getMergeSortTime(){
+    private static Long getMergeSortTime(MetaStats metaStats){
 
         // Log start time.
         Long startTime = System.nanoTime();
@@ -138,7 +161,7 @@ public class Main {
      * Build heap time is equivalent to sorting time.
      * @return
      */
-    private static Long getHeapSortTime(){
+    private static Long getHeapSortTime(MetaStats metaStats){
 
         // Log start time.
         Long startTime = System.nanoTime();
