@@ -1,103 +1,167 @@
 package com.company;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Main {
 
     /**
-     * The main method calls getTime() methods
-     * for individual algorithms respectively, and
-     * feeds this information into the
-     * printTimeStatistics() method.
-     * @param args
+     * The main method initializes a container
+     * that contains objects related to each
+     * algorithms performance statistics.
+     * This object is passed to PrintData class.
      */
     public static void main(String[] args) {
 
-        //StatsObjectContainer contains a statsObject reference
-        //for each algorithm object.
+        //DebugAndTest debugAndTest = new DebugAndTest();
+        //debugAndTest.testSorts();
+
+        //StatsObjectContainer contains a statsObject reference for each algorithm object.
         StatsObjectContainer statsObjectContainer = new StatsObjectContainer();
 
         //Populate statsObjects in StatsObjectContainer
-        generateStats(statsObjectContainer.mergeSortStats, new MergeSort());
-        generateStats(statsObjectContainer.priorityQueueStats, new MergeSort());
-        generateStats(statsObjectContainer.quickSortStats, new MergeSort());
-        generateStats(statsObjectContainer.shellSort2GapStats, new MergeSort());
-        generateStats(statsObjectContainer.shellSortGonnetStats, new MergeSort());
-        generateStats(statsObjectContainer.shellSortHibbardStats, new MergeSort());
-        generateStats(statsObjectContainer.shellSortKnuthStats, new MergeSort());
-        generateStats(statsObjectContainer.shellSortSedgewickStats, new MergeSort());
+        generateStats(statsObjectContainer);
 
         //Prints sort-time statistics.
         PrintData.printSortTimeStatistics(statsObjectContainer);
     }
 
-    private static <A extends SortInterface>
-    void generateStats(
-            StatsObject statsObject,
-            A algorithmObject){
+    /**
+     * This method will use a new sample for each run.
+     * Each algorithm will use the same sample for the same run.
+     * @param statsObjectContainer
+     */
+    public static void generateStats(StatsObjectContainer statsObjectContainer){
 
-        //The reference to the sample
+        int sampleSize = 1000;
         Comparable[] sample;
 
-        //Sample size is 1 million
-        int sampleSize = 1000000;
-
         //Record minimum sample size
-        if(statsObject.minimumSampleSize == null)
-            statsObject.minimumSampleSize = sampleSize;
+        if(statsObjectContainer.minimumSampleSize == null)
+            statsObjectContainer.minimumSampleSize = sampleSize;
 
-        //Outer loop generates the sample
-        for(int i = 1; i <= 3; i++){
+        //Sample 1
 
-            //Successive samples should be twice as large as the previous
+            //Run 1
             sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S1R1 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S1R1 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S1R1 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S1R1 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S1R1 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S1R1 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S1R1 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S1R1 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
+
+            //Run 2
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S1R2 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S1R2 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S1R2 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S1R2 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S1R2 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S1R2 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S1R2 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S1R2 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
+
+
+            //Run 3
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S1R3 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S1R3 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S1R3 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S1R3 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S1R3 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S1R3 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S1R3 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S1R3 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
+
             sampleSize *= 2;
 
-            //Inner loops generates the run
-            for(int j = 1; j <= 3; j++){
+        //Sample 2
 
-                //Sample 1
+            //Run 1
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S2R1 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S2R1 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S2R1 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S2R1 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S2R1 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S2R1 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S2R1 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S2R1 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
 
-                    //Run 1
-                    if(i == 1 && j == 1)
-                        statsObject.S1R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
-                    //Run 2
-                    if(i == 1 && j == 2)
-                        statsObject.S1R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
-                    //Run 3
-                    if(i == 1 && j == 3)
-                        statsObject.S1R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
 
-                //Sample 2
+            //Run 2
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S2R2 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S2R2 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S2R2 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S2R2 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S2R2 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S2R2 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S2R2 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S2R2 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
 
-                    //Run 1
-                    if(i == 2 && j == 1)
-                        statsObject.S2R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
-                    //Run 2
-                    if(i == 2 && j == 2)
-                        statsObject.S2R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
-                    //Run 3
-                    if(i == 2 && j == 3)
-                        statsObject.S2R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
 
-                //Sample 3
+            //Run 3
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S2R3 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S2R3 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S2R3 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S2R3 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S2R3 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S2R3 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S2R3 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S2R3 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
 
-                    //Run 1
-                    if(i == 3 && j == 1)
-                        statsObject.S3R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
-                    //Run 2
-                    if(i == 3 && j == 2)
-                        statsObject.S3R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
-                    //Run 3
-                    if(i == 3 && j == 3)
-                        statsObject.S3R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
-            }
-        }
+            sampleSize *= 2;
+
+        //Sample 3
+
+            //Run 1
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S3R1 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S3R1 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S3R1 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S3R1 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S3R1 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S3R1 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S3R1 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S3R1 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
+
+
+            //Run 2
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S3R2 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S3R2 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S3R2 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S3R2 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S3R2 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S3R2 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S3R2 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S3R2 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
+
+
+            //Run 3
+            sample = returnRandomArray(sampleSize);
+            statsObjectContainer.mergeSortStats.S3R3 = getRunTime(new MergeSort(), returnDeepCopy(sample));
+            statsObjectContainer.heapSortStats.S3R3 = getRunTime(new HeapSort(), returnDeepCopy(sample));
+            statsObjectContainer.quickSortStats.S3R3 = getRunTime(new QuickSort(), returnDeepCopy(sample));
+            statsObjectContainer.shellSort2GapStats.S3R3 = getRunTime(new ShellSort2Gap(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortGonnetStats.S3R3 = getRunTime(new ShellSortGonnet(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortHibbardStats.S3R3 = getRunTime(new ShellSortHibbard(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortKnuthStats.S3R3 = getRunTime(new ShellSortKnuth(), returnDeepCopy(sample));
+            statsObjectContainer.shellSortSedgewickStats.S3R3 = getRunTime(new ShellSortSedgewick(), returnDeepCopy(sample));
 
         //Calculate averages
-        statsObject.calculateAverages();
-
+        statsObjectContainer.mergeSortStats.calculateAverages();
+        statsObjectContainer.heapSortStats.calculateAverages();
+        statsObjectContainer.quickSortStats.calculateAverages();
+        statsObjectContainer.shellSort2GapStats.calculateAverages();
+        statsObjectContainer.shellSortGonnetStats.calculateAverages();
+        statsObjectContainer.shellSortHibbardStats.calculateAverages();
+        statsObjectContainer.shellSortKnuthStats.calculateAverages();
+        statsObjectContainer.shellSortSedgewickStats.calculateAverages();
     }
 
     private static Comparable[] returnDeepCopy(Comparable[] a){

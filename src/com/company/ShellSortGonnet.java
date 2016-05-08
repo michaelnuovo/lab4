@@ -3,13 +3,13 @@ package com.company;
 /**
  * Created by micha on 5/6/2016.
  */
-public class ShellSortGonnet {
+public class ShellSortGonnet implements SortInterface {
 
     /**
      * Shellsort, using a sequence suggested by Gonnet.
      * @param a an array of Comparable items.
      */
-    public static void shellsort( Comparable [ ] a )
+    public void sort( Comparable [ ] a )
     {
         for( int gap = a.length / 2; gap > 0;
              gap = gap == 2 ? 1 : (int) ( gap / 2.2 ) )
