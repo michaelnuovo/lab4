@@ -40,9 +40,12 @@ public class Main {
         //The reference to the sample
         Comparable[] sample;
 
-        //n is a minimum data size that requires half a second of my CPU time
-        //with a quadratic sorting algorithm
+        //Sample size is 1 million
         int sampleSize = 1000;
+
+        //Recrod minimum sample size
+        if(statsObject.minimumSampleSize == null)
+            statsObject.minimumSampleSize = sampleSize;
 
         //Outer loop generates the sample
         for(int j = 1; j <= 3; j++){
@@ -58,39 +61,52 @@ public class Main {
 
                     //Run 1
                     if(k == 1 && j == 1)
-                        statsObject.S1R1 = getRunTime(algorithmObject, sample);
+                        statsObject.S1R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 2
                     if(k == 1 && j == 2)
-                        statsObject.S1R2 = getRunTime(algorithmObject, sample);
+                        statsObject.S1R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 3
                     if(k == 1 && j == 3)
-                        statsObject.S1R3 = getRunTime(algorithmObject, sample);
+                        statsObject.S1R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
 
                 //Sample 2
 
                     //Run 1
                     if(k == 2 && j == 1)
-                        statsObject.S2R1 = getRunTime(algorithmObject, sample);
+                        statsObject.S2R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 2
                     if(k == 2 && j == 2)
-                        statsObject.S2R2 = getRunTime(algorithmObject, sample);
+                        statsObject.S2R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 3
                     if(k == 2 && j == 3)
-                        statsObject.S2R3 = getRunTime(algorithmObject, sample);
+                        statsObject.S2R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
 
                 //Sample 3
 
                     //Run 1
                     if(k == 3 && j == 1)
-                        statsObject.S3R1 = getRunTime(algorithmObject, sample);
+                        statsObject.S3R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 2
                     if(k == 3 && j == 2)
-                        statsObject.S3R2 = getRunTime(algorithmObject, sample);
+                        statsObject.S3R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 3
                     if(k == 3 && j == 3)
-                        statsObject.S3R3 = getRunTime(algorithmObject, sample);
+                        statsObject.S3R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
             }
         }
+
+        //Calculate averages
+        statsObject.calculateAverages();
+
+    }
+
+    private static Comparable[] returnDeepCopy(Comparable[] a){
+
+        Comparable[] deepCopy = new Comparable[a.length];
+        for(int i = 0; i < a.length; i++)
+            deepCopy[i] = a[i];
+
+        return deepCopy;
     }
 
     private static
