@@ -41,56 +41,56 @@ public class Main {
         Comparable[] sample;
 
         //Sample size is 1 million
-        int sampleSize = 1000;
+        int sampleSize = 1000000;
 
-        //Recrod minimum sample size
+        //Record minimum sample size
         if(statsObject.minimumSampleSize == null)
             statsObject.minimumSampleSize = sampleSize;
 
         //Outer loop generates the sample
-        for(int j = 1; j <= 3; j++){
+        for(int i = 1; i <= 3; i++){
 
             //Successive samples should be twice as large as the previous
             sample = returnRandomArray(sampleSize);
             sampleSize *= 2;
 
             //Inner loops generates the run
-            for(int k = 1; k <= 3; k++){
+            for(int j = 1; j <= 3; j++){
 
                 //Sample 1
 
                     //Run 1
-                    if(k == 1 && j == 1)
+                    if(i == 1 && j == 1)
                         statsObject.S1R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 2
-                    if(k == 1 && j == 2)
+                    if(i == 1 && j == 2)
                         statsObject.S1R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 3
-                    if(k == 1 && j == 3)
+                    if(i == 1 && j == 3)
                         statsObject.S1R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
 
                 //Sample 2
 
                     //Run 1
-                    if(k == 2 && j == 1)
+                    if(i == 2 && j == 1)
                         statsObject.S2R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 2
-                    if(k == 2 && j == 2)
+                    if(i == 2 && j == 2)
                         statsObject.S2R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 3
-                    if(k == 2 && j == 3)
+                    if(i == 2 && j == 3)
                         statsObject.S2R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
 
                 //Sample 3
 
                     //Run 1
-                    if(k == 3 && j == 1)
+                    if(i == 3 && j == 1)
                         statsObject.S3R1 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 2
-                    if(k == 3 && j == 2)
+                    if(i == 3 && j == 2)
                         statsObject.S3R2 = getRunTime(algorithmObject, returnDeepCopy(sample));
                     //Run 3
-                    if(k == 3 && j == 3)
+                    if(i == 3 && j == 3)
                         statsObject.S3R3 = getRunTime(algorithmObject, returnDeepCopy(sample));
             }
         }
