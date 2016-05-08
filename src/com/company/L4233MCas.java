@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class Main {
+public class L4233MCas {
 
     /**
      * The main method initializes a container
@@ -29,7 +29,7 @@ public class Main {
      */
     public static void generateStats(StatsObjectContainer statsObjectContainer){
 
-        int sampleSize = 1000;
+        int sampleSize = 1000000;
         Comparable[] sample;
 
         //Record minimum sample size

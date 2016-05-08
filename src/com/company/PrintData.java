@@ -164,58 +164,58 @@ public class PrintData {
 
         System.out.printf(
                 columnFormat,
-                m[0][0].name+"("+f.format(m[0][0].time)+")",
-                m[0][1].name+"("+f.format(m[0][1].time)+")",
-                m[0][2].name+"("+f.format(m[0][2].time)+")"
+                m[0][0].name+" ("+f.format(m[0][0].time)+")",
+                m[0][1].name+" ("+f.format(m[0][1].time)+")",
+                m[0][2].name+" ("+f.format(m[0][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[1][0].name+"("+f.format(m[1][0].time)+")",
-                m[1][1].name+"("+f.format(m[1][1].time)+")",
-                m[1][2].name+"("+f.format(m[1][2].time)+")"
+                m[1][0].name+" ("+f.format(m[1][0].time)+")",
+                m[1][1].name+" ("+f.format(m[1][1].time)+")",
+                m[1][2].name+" ("+f.format(m[1][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[2][0].name+"("+f.format(m[2][0].time)+")",
-                m[2][1].name+"("+f.format(m[2][1].time)+")",
-                m[2][2].name+"("+f.format(m[2][2].time)+")"
+                m[2][0].name+" ("+f.format(m[2][0].time)+")",
+                m[2][1].name+" ("+f.format(m[2][1].time)+")",
+                m[2][2].name+" ("+f.format(m[2][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[3][0].name+"("+f.format(m[3][0].time)+")",
-                m[3][1].name+"("+f.format(m[3][1].time)+")",
-                m[3][2].name+"("+f.format(m[3][2].time)+")"
+                m[3][0].name+" ("+f.format(m[3][0].time)+")",
+                m[3][1].name+" ("+f.format(m[3][1].time)+")",
+                m[3][2].name+" ("+f.format(m[3][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[4][0].name+"("+f.format(m[4][0].time)+")",
-                m[4][1].name+"("+f.format(m[4][1].time)+")",
-                m[4][2].name+"("+f.format(m[4][2].time)+")"
+                m[4][0].name+" ("+f.format(m[4][0].time)+")",
+                m[4][1].name+" ("+f.format(m[4][1].time)+")",
+                m[4][2].name+" ("+f.format(m[4][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[5][0].name+"("+f.format(m[5][0].time)+")",
-                m[5][1].name+"("+f.format(m[5][1].time)+")",
-                m[5][2].name+"("+f.format(m[5][2].time)+")"
+                m[5][0].name+" ("+f.format(m[5][0].time)+")",
+                m[5][1].name+" ("+f.format(m[5][1].time)+")",
+                m[5][2].name+" ("+f.format(m[5][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[6][0].name+"("+f.format(m[6][0].time)+")",
-                m[6][1].name+"("+f.format(m[6][1].time)+")",
-                m[6][2].name+"("+f.format(m[6][2].time)+")"
+                m[6][0].name+" ("+f.format(m[6][0].time)+")",
+                m[6][1].name+" ("+f.format(m[6][1].time)+")",
+                m[6][2].name+" ("+f.format(m[6][2].time)+")"
         );
 
         System.out.printf(
                 columnFormat,
-                m[7][0].name+"("+f.format(m[7][0].time)+")",
-                m[7][1].name+"("+f.format(m[7][1].time)+")",
-                m[7][2].name+"("+f.format(m[7][2].time)+")"
+                m[7][0].name+" ("+f.format(m[7][0].time)+")",
+                m[7][1].name+" ("+f.format(m[7][1].time)+")",
+                m[7][2].name+" ("+f.format(m[7][2].time)+")"
         );
 
     }
@@ -289,37 +289,37 @@ public class PrintData {
 
         Entry[][] m = new Entry[8][3];
 
-        m[0][0] = new Entry("mergeSortStats",o.mergeSortStats.S1Average);
-        m[0][1] = new Entry("mergeSortStats",o.mergeSortStats.S2Average);
-        m[0][2] = new Entry("mergeSortStats",o.mergeSortStats.S3Average);
+        m[0][0] = new Entry("Merge",o.mergeSortStats.S1Average);
+        m[0][1] = new Entry("Merge",o.mergeSortStats.S2Average);
+        m[0][2] = new Entry("Merge",o.mergeSortStats.S3Average);
 
-        m[1][0] = new Entry("heapSortStats",o.heapSortStats.S1Average);
-        m[1][1] = new Entry("heapSortStats",o.heapSortStats.S2Average);
-        m[1][2] = new Entry("heapSortStats",o.heapSortStats.S3Average);
+        m[1][0] = new Entry("Heap",o.heapSortStats.S1Average);
+        m[1][1] = new Entry("Heap",o.heapSortStats.S2Average);
+        m[1][2] = new Entry("Heap",o.heapSortStats.S3Average);
 
-        m[2][0] = new Entry("quickSortStats",o.quickSortStats.S1Average);
-        m[2][1] = new Entry("quickSortStats",o.quickSortStats.S2Average);
-        m[2][2] = new Entry("quickSortStats",o.quickSortStats.S3Average);
+        m[2][0] = new Entry("Quick",o.quickSortStats.S1Average);
+        m[2][1] = new Entry("Quick",o.quickSortStats.S2Average);
+        m[2][2] = new Entry("Quick",o.quickSortStats.S3Average);
 
-        m[3][0] = new Entry("shellSort2GapStats",o.shellSort2GapStats.S1Average);
-        m[3][1] = new Entry("shellSort2GapStats",o.shellSort2GapStats.S2Average);
-        m[3][2] = new Entry("shellSort2GapStats",o.shellSort2GapStats.S3Average);
+        m[3][0] = new Entry("2Gap",o.shellSort2GapStats.S1Average);
+        m[3][1] = new Entry("2Gap",o.shellSort2GapStats.S2Average);
+        m[3][2] = new Entry("2Gap",o.shellSort2GapStats.S3Average);
 
-        m[4][0] = new Entry("shellSortGonnetStats",o.shellSortGonnetStats.S1Average);
-        m[4][1] = new Entry("shellSortGonnetStats",o.shellSortGonnetStats.S2Average);
-        m[4][2] = new Entry("shellSortGonnetStats",o.shellSortGonnetStats.S3Average);
+        m[4][0] = new Entry("Gonnet",o.shellSortGonnetStats.S1Average);
+        m[4][1] = new Entry("Gonnet",o.shellSortGonnetStats.S2Average);
+        m[4][2] = new Entry("Gonnet",o.shellSortGonnetStats.S3Average);
 
-        m[5][0] = new Entry("shellSortHibbardStats",o.shellSortHibbardStats.S1Average);
-        m[5][1] = new Entry("shellSortHibbardStats",o.shellSortHibbardStats.S2Average);
-        m[5][2] = new Entry("shellSortHibbardStats",o.shellSortHibbardStats.S3Average);
+        m[5][0] = new Entry("Hibbard",o.shellSortHibbardStats.S1Average);
+        m[5][1] = new Entry("Hibbard",o.shellSortHibbardStats.S2Average);
+        m[5][2] = new Entry("Hibbard",o.shellSortHibbardStats.S3Average);
 
-        m[6][0] = new Entry("shellSortKnuthStats",o.shellSortKnuthStats.S1Average);
-        m[6][1] = new Entry("shellSortKnuthStats",o.shellSortKnuthStats.S2Average);
-        m[6][2] = new Entry("shellSortKnuthStats",o.shellSortKnuthStats.S3Average);
+        m[6][0] = new Entry("Knuth",o.shellSortKnuthStats.S1Average);
+        m[6][1] = new Entry("Knuth",o.shellSortKnuthStats.S2Average);
+        m[6][2] = new Entry("Knuth",o.shellSortKnuthStats.S3Average);
 
-        m[7][0] = new Entry("shellSortSedgewickStats",o.shellSortSedgewickStats.S1Average);
-        m[7][1] = new Entry("shellSortSedgewickStats",o.shellSortSedgewickStats.S2Average);
-        m[7][2] = new Entry("shellSortSedgewickStats",o.shellSortSedgewickStats.S3Average);
+        m[7][0] = new Entry("Sedgewick",o.shellSortSedgewickStats.S1Average);
+        m[7][1] = new Entry("Sedgewick",o.shellSortSedgewickStats.S2Average);
+        m[7][2] = new Entry("Sedgewick",o.shellSortSedgewickStats.S3Average);
 
         return m;
     }

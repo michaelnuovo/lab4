@@ -148,7 +148,7 @@ public class ShellSortSedgewick implements SortInterface {
         //If firstSequence is exhausted, this happens, and the rest of the
         //secondSequence is copied over to sedgewickSequence.
         while(rightPos<=rightEnd)
-            secondSequence[tmpPos++] = secondSequence[rightPos++];
+            sedgewickSequence[tmpPos++] = secondSequence[rightPos++];
 
         return sedgewickSequence;
     }
