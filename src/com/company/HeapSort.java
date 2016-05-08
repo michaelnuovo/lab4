@@ -6,13 +6,13 @@ import weiss.util.*;
 /**
  * PriorityQueue class implemented via the binary heap.
  */
-public class PriorityQueue<AnyType> extends AbstractCollection<AnyType>
-        implements Queue<AnyType>
+public class HeapSort<AnyType> extends AbstractCollection<AnyType>
+        implements Queue<AnyType>, SortInterface
 {
     /**
      * Construct an empty PriorityQueue.
      */
-    public PriorityQueue( )
+    public HeapSort( )
     {
         currentSize = 0;
         cmp = null;
@@ -22,7 +22,7 @@ public class PriorityQueue<AnyType> extends AbstractCollection<AnyType>
     /**
      * Construct an empty PriorityQueue with a specified comparator.
      */
-    public PriorityQueue( Comparator<? super AnyType> c )
+    public HeapSort(Comparator<? super AnyType> c )
     {
         currentSize = 0;
         cmp = c;
@@ -34,11 +34,12 @@ public class PriorityQueue<AnyType> extends AbstractCollection<AnyType>
      * Construct a PriorityQueue from another Collection.
      */
     //public PriorityQueue( Collection<? extends AnyType> coll )
-    public PriorityQueue( AnyType[] comparableArray )
+    //public void sort(AnyType[] comparableArray )
+    public void sort( Comparable [ ] a )
     {
         cmp = null;
         //currentSize = coll.size( );
-        currentSize = comparableArray.length;
+        currentSize = a.length;
         array = (AnyType[]) new Object[ ( currentSize + 2 ) * 11 / 10 ];
 
         //int i = 1;
@@ -46,8 +47,8 @@ public class PriorityQueue<AnyType> extends AbstractCollection<AnyType>
         //    array[ i++ ] = item;
 
         int i = 1;
-        for( AnyType item : comparableArray )
-            array[ i++ ] = item;
+        for(Comparable item : a )
+            array[ i++ ] = (AnyType) item;
 
         buildHeap( );
     }

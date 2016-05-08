@@ -3,13 +3,15 @@ package com.company;
 /**
  * Created by micha on 5/4/2016.
  */
-public class MergeSort {
+public class MergeSort implements SortInterface {
+
+    String name = "MergeSort";
 
     /**
      * Mergesort algorithm.
      * @param a an array of Comparable items.
      */
-    public static void mergeSort( Comparable [ ] a )
+    public void sort( Comparable [ ] a )
     {
         Comparable [ ] tmpArray = new Comparable[ a.length ];
         mergeSort( a, tmpArray, 0, a.length - 1 );

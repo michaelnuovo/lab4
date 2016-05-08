@@ -3,13 +3,13 @@ package com.company;
 /**
  * Created by micha on 5/4/2016.
  */
-public class QuickSort2Gap {
+public class QuickSort implements SortInterface {
 
     /**
      * Quicksort algorithm.
      * @param a an array of Comparable items.
      */
-    public static void quicksort( Comparable [ ] a )
+    public void sort( Comparable [ ] a )
     {
         quicksort( a, 0, a.length - 1 );
     }

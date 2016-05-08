@@ -7,13 +7,10 @@ public class Main {
     /**
      * The main method initializes a container
      * that contains objects related to each
-     * algorithms performance statistics.
+     * algorithm's performance statistics.
      * This object is passed to PrintData class.
      */
     public static void main(String[] args) {
-
-        //DebugAndTest debugAndTest = new DebugAndTest();
-        //debugAndTest.testSorts();
 
         //StatsObjectContainer contains a statsObject reference for each algorithm object.
         StatsObjectContainer statsObjectContainer = new StatsObjectContainer();
@@ -164,6 +161,11 @@ public class Main {
         statsObjectContainer.shellSortSedgewickStats.calculateAverages();
     }
 
+    /**
+     * Returns deep copy of the sample array.
+     * @param a
+     * @return
+     */
     private static Comparable[] returnDeepCopy(Comparable[] a){
 
         Comparable[] deepCopy = new Comparable[a.length];
@@ -173,6 +175,13 @@ public class Main {
         return deepCopy;
     }
 
+    /**
+     * Get's algorithm run time with System.nano
+     * @param algorithmObject
+     * @param sample
+     * @param <A>
+     * @return
+     */
     private static
     <A extends SortInterface>
     Long getRunTime(A algorithmObject, Comparable[] sample){
